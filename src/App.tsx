@@ -27,21 +27,6 @@ function Home() {
             Let's Test Your Frontend Knowledge
           </h3>
 
-          {/* <div className="flex gap-4 justify-center mb-8">
-            <button
-              onClick={() => setMode("review")}
-              className="cursor-pointer px-4 py-2 bg-primary font-body text-white rounded-lg hover:bg-green-500"
-            >
-              Review Mode
-            </button>
-            <button
-              onClick={() => setMode("timed")}
-              className="cursor-pointer px-4 py-2  bg-secondary text-[#A87856] font-body rounded-lg hover:bg-red-500"
-            >
-              Timed Mode
-            </button>
-          </div> */}
-
           <div className="grid grid-cols-2 gap-10 text-center justify-between font-body ">
             <div className="logo-container border border-border  hover:bg-secondary  shadow-lg rounded-lg px-8 py-8 ">
               <TopicsButton
