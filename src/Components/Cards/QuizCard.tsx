@@ -1,173 +1,17 @@
-// import { useState } from "react";
-// import type { QuizCardProps } from "@/Interfaces/QuizCardProps";
-
-// export function QuizCard({ questions, onBack }: QuizCardProps) {
-//   const [currentIndex, setCurrentIndex] = useState(0);
-//   const [selectedOption, setSelectedOption] = useState<number | null>(null);
-//   const [score, setScore] = useState(0);
-
-//   const currentQuestion = questions[currentIndex];
-
-//   function handleOptionClick(index: number) {
-//     setSelectedOption(index);
-//     if (index === currentQuestion.correctAnswerIndex) {
-//       setScore((prev) => prev + 1);
-//     }
-//   }
-
-//   function handleNext() {
-//     setSelectedOption(null);
-//     if (currentIndex < questions.length - 1) {
-//       setCurrentIndex((prev) => prev + 1);
-//     } else {
-//       alert(`Quiz finished! Your score: ${score}/${questions.length}`);
-//       onBack(); // go back to topics
-//     }
-//   }
-
-//   return (
-//     <div className="w-full p-6 flex flex-col gap-4">
-//       <h2 className="heading">
-//         Question {currentIndex + 1} of {questions.length}
-//       </h2>
-//       <p className="sub-heading">{currentQuestion.question}</p>
-
-//       <div className="flex flex-col gap-2">
-//         {currentQuestion.options.map((option, idx) => (
-//           <button
-//             key={idx}
-//             onClick={() => handleOptionClick(idx)}
-//             className={`px-4 py-2 rounded-lg border
-//               ${selectedOption === idx ? "bg-blue-200" : "bg-gray-100"}
-//               hover:bg-blue-100`}
-//           >
-//             {option}
-//           </button>
-//         ))}
-//       </div>
-
-//       <div className="flex justify-between pt-4">
-//         <button
-//           onClick={onBack}
-//           className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
-//         >
-//           Back
-//         </button>
-//         <button
-//           onClick={handleNext}
-//           className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-//         >
-//           {currentIndex < questions.length - 1 ? "Next" : "Finish"}
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
-
-// import { useState } from "react";
-// import { useNavigate, useParams } from "react-router-dom";
-// import type { Questions } from "@/Interfaces/Questions";
-// import { useQuizContext } from "@/Contexts/useQuizContext";
-// import HtmlQuestions from "@/Questions/HtmlQuestions";
-// import CssQuestions from "@/Questions/CssQuestions";
-// import JavascriptQuestions from "@/Questions/JavascriptQuestions";
-// import ReactQuestions from "@/Questions/ReactQuestions";
-
-// export function QuizCard() {
-//   const { topic } = useParams<{ topic: string }>();
-//   const { mode } = useQuizContext();
-//   const navigate = useNavigate();
-
-//   const questionsMap: Record<string, Questions[]> = {
-//     html: HtmlQuestions,
-//     css: CssQuestions,
-//     js: JavascriptQuestions,
-//     react: ReactQuestions,
-//   };
-
-//   const questions = questionsMap[topic ?? "html"];
-//   const [currentIndex, setCurrentIndex] = useState(0);
-//   const [selectedOption, setSelectedOption] = useState<number | null>(null);
-//   const [score, setScore] = useState(0);
-
-//   const currentQuestion = questions[currentIndex];
-
-//   function handleOptionClick(index: number) {
-//     setSelectedOption(index);
-//     if (index === currentQuestion.correctAnswerIndex) {
-//       setScore((prev) => prev + 1);
-//     }
-//   }
-
-//   function handleNext() {
-//     setSelectedOption(null);
-//     if (currentIndex < questions.length - 1) {
-//       setCurrentIndex((prev) => prev + 1);
-//     } else {
-//       alert(`Quiz finished! Score: ${score}/${questions.length}`);
-//       navigate("/");
-//     }
-//   }
-
-//   return (
-//     <div className="w-full bg-white rounded-2xl shadow-xl p-6 flex flex-col gap-4">
-//       <h2 className="sub-heading">
-//         {mode === "timed" ? "Timed Mode" : "Review Mode"} -{" "}
-//         {topic?.toUpperCase()}
-//       </h2>
-
-//       <h3 className="text-lg font-medium">
-//         Question {currentIndex + 1} of {questions.length}
-//       </h3>
-
-//       <p>{currentQuestion.question}</p>
-
-//       <div className="flex flex-col gap-2">
-//         {currentQuestion.options.map((option, idx) => (
-//           <button
-//             key={idx}
-//             onClick={() => handleOptionClick(idx)}
-//             className={`px-4 py-2 rounded-lg border
-//               ${selectedOption === idx ? "bg-blue-200" : "bg-gray-100"}
-//               hover:bg-blue-100`}
-//           >
-//             {option}
-//           </button>
-//         ))}
-//       </div>
-
-//       <div className="flex justify-between mt-4">
-//         <button
-//           onClick={() => navigate("/")}
-//           className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
-//         >
-//           Back
-//         </button>
-//         <button
-//           onClick={handleNext}
-//           className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-//         >
-//           {currentIndex < questions.length - 1 ? "Next" : "Finish"}
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
-
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type { Questions } from "@/Interfaces/Questions";
-import { useQuizContext } from "@/Contexts/useQuizContext";
+// import { useQuizContext } from "@/Contexts/useQuizContext";
 import HtmlQuestions from "@/Questions/HtmlQuestions";
 import CssQuestions from "@/Questions/CssQuestions";
 import JavascriptQuestions from "@/Questions/JavascriptQuestions";
 import ReactQuestions from "@/Questions/ReactQuestions";
-import { Progress } from "@/components/ui/progress";
+import { Progress } from "@/Components/ui/progress";
 import toast, { Toaster } from "react-hot-toast";
 
 export function QuizCard() {
   const { topic } = useParams<{ topic: string }>();
-  const { mode } = useQuizContext();
+  // const { mode } = useQuizContext();
   const navigate = useNavigate();
 
   const questionsMap: Record<string, Questions[]> = {
