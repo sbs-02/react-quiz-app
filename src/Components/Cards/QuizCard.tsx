@@ -6,7 +6,7 @@ import CssQuestions from "@/Questions/CssQuestions";
 import JavascriptQuestions from "@/Questions/JavascriptQuestions";
 import ReactQuestions from "@/Questions/ReactQuestions";
 import { Progress } from "@/Components/ui/progress";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useAppDispatch } from "@/store/store";
 import { setScore } from "../../store/scoreSlice";
 
@@ -122,7 +122,6 @@ export function QuizCard() {
           {currentIndex < questions.length - 1 ? "Next" : "Finish"}
         </button>
       </div>
-      <Toaster />
     </div>
   );
 }
