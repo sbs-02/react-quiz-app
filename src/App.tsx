@@ -2,16 +2,22 @@ import "./App.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { Container } from "./Components/Container";
 import { TopicsButton } from "./Components/Buttons/TopicButtons";
-import htmlSVG from "./Images/html.svg";
-import cssSVG from "./Images/css.svg";
-import javascriptSVG from "./Images/javascript.svg";
-import reactSVG from "./Images/react.svg";
+
 import { QuizCard } from "./Components/Cards/QuizCard";
+import { useAppSelector } from "./store/store";
+
 // import { useQuizContext } from "./Contexts/useQuizContext";
 
 function Home() {
   const navigate = useNavigate();
+  const scores = useAppSelector((state) => state);
 
+  const htmlSVG = "/images/html.svg";
+  const cssSVG = "/images/css.svg";
+  const javascriptSVG = "/images/javascript.svg";
+  const reactSVG = "/images/react.svg";
+
+  console.log(scores);
   return (
     <Container center>
       <div className="rounded-lg  bg-background   shadow-lg  p-8 lg:p-12 mb-8">
@@ -22,11 +28,10 @@ function Home() {
             Welcome to Frontend Web Development
           </h1>
         </div>
-        <div className="text-center flex flex-col items-center justify-center gap-4 ">
+        <div className="flex flex-col   gap-4 ">
           <h3 className="font-body text-text-light text-2xl italic mb-8">
             Let's Test Your Frontend Knowledge
           </h3>
-
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-center justify-items-center font-body">
             <div className="logo-container border border-border  hover:bg-secondary  shadow-lg rounded-lg px-8 py-8 ">
               <TopicsButton
@@ -43,7 +48,6 @@ function Home() {
                 onClick={() => navigate("/quiz/css")}
               />
             </div>
-
             <div className="logo-container border border-border hover:bg-secondary  shadow-lg rounded-lg px-8 py-8">
               <TopicsButton
                 logo={javascriptSVG}
@@ -51,13 +55,21 @@ function Home() {
                 onClick={() => navigate("/quiz/js")}
               />
             </div>
-
             <div className="logo-container border border-border hover:bg-secondary  shadow-lg rounded-lg px-8 py-8">
               <TopicsButton
                 logo={reactSVG}
                 label="React"
                 onClick={() => navigate("/quiz/react")}
               />
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <div className="flex flex-col mt-6 font-body text-lg">
+              <span className="font-semibold mb-2">Past scores</span>
+              <span>HTML: {scores?.html || 0}/5</span>
+              <span>CSS: {scores?.css || 0}/5</span>
+              <span>JavaScript: {scores?.js || 0}/5</span>
+              <span>React: {scores?.react || 0}/5</span>
             </div>
           </div>
         </div>

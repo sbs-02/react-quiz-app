@@ -5,18 +5,22 @@ import { QuizProvider } from "./Contexts/QuizContext";
 import "./index.css";
 import App from "./App.tsx";
 import { Container } from "./Components/Container.tsx";
+import { Provider } from "react-redux";
+import { store } from "./store/store.ts";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
-      <Container center>
+    <Provider store={store}>
+      <BrowserRouter>
         {/* <Routes>
         <Route path="/" element={<App />} />
       </Routes> */}
         <QuizProvider>
-          <App />
+          <Container center>
+            <App />
+          </Container>
         </QuizProvider>
-      </Container>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   </StrictMode>
 );

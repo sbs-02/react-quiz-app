@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type { Questions } from "@/Interfaces/Questions";
-// import { useQuizContext } from "@/Contexts/useQuizContext";
 import HtmlQuestions from "@/Questions/HtmlQuestions";
 import CssQuestions from "@/Questions/CssQuestions";
 import JavascriptQuestions from "@/Questions/JavascriptQuestions";
@@ -9,11 +8,16 @@ import ReactQuestions from "@/Questions/ReactQuestions";
 import { Progress } from "@/Components/ui/progress";
 import toast, { Toaster } from "react-hot-toast";
 
+// Redux
+import { useAppDispatch } from "@/store/store";
+import { setScore } from "../../store/scoreSlice";
+
 export function QuizCard() {
   const { topic } = useParams<{ topic: string }>();
-  // const { mode } = useQuizContext();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  // Map topics to their respective questions
   const questionsMap: Record<string, Questions[]> = {
     html: HtmlQuestions,
     css: CssQuestions,
@@ -24,17 +28,20 @@ export function QuizCard() {
   const questions = questionsMap[topic ?? "html"];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
-  const [score, setScore] = useState(0);
+  const [score, setScoreState] = useState(0); // local quiz score
+  const [disable, setDisable] = useState(false);
 
   const currentQuestion = questions[currentIndex];
 
+  // Handle option selection
   function handleOptionClick(index: number) {
     setSelectedOption(index);
     if (index === currentQuestion.correctAnswerIndex) {
-      setScore((prev) => prev + 1);
+      setScoreState((prev) => prev + 1);
     }
   }
 
+  // Handle "Next" or "Finish"
   function handleNext() {
     if (selectedOption === null) {
       toast.error("Please select an answer", {
@@ -46,10 +53,21 @@ export function QuizCard() {
       });
       return;
     }
+
     setSelectedOption(null);
+
     if (currentIndex < questions.length - 1) {
       setCurrentIndex((prev) => prev + 1);
     } else {
+      setDisable(true);
+
+      dispatch(
+        setScore({
+          subject: topic as "html" | "css" | "js" | "react",
+          value: score,
+        })
+      );
+
       toast.success(`Quiz finished! Score: ${score}/${questions.length}`, {
         duration: 4000,
         style: {
@@ -60,10 +78,12 @@ export function QuizCard() {
           fontSize: "24px",
         },
       });
+
       setTimeout(() => navigate("/"), 4000);
     }
   }
 
+  // Progress bar percentage
   const progressValue = ((currentIndex + 1) / questions.length) * 100;
 
   return (
@@ -101,7 +121,7 @@ export function QuizCard() {
           Back
         </button>
         <button
-          // disabled={selectedOption === null}
+          disabled={disable}
           onClick={handleNext}
           className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-tint cursor-pointer"
         >
