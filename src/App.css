@@ -143,21 +143,6 @@ body {
   font-weight: 400;
 }
 
-.heading {
-  font-family: "Michroma";
-  font-size: 32px;
-  font-weight: 800;
-  color: rgb(121, 50, 6);
-}
-
-.sub-heading {
-  font-family: "Michroma";
-  font-size: 24px;
-  font-weight: 600;
-  font-style: italic;
-  color: rgb(168, 120, 86);
-}
-
 .logo-container {
   width: 100%; /* takes available space in grid */
   max-width: 180px; /* keeps them from growing too large */

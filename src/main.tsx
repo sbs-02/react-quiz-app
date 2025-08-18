@@ -12,9 +12,6 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        {/* <Routes>
-        <Route path="/" element={<App />} />
-      </Routes> */}
         <QuizProvider>
           <Container center>
             <App />

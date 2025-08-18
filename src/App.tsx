@@ -2,11 +2,8 @@ import "./App.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { Container } from "./Components/Container";
 import { TopicsButton } from "./Components/Buttons/TopicButtons";
-
 import { QuizCard } from "./Components/Cards/QuizCard";
 import { useAppSelector } from "./store/store";
-
-// import { useQuizContext } from "./Contexts/useQuizContext";
 
 function Home() {
   const navigate = useNavigate();
