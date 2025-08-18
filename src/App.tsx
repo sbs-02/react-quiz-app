@@ -27,7 +27,7 @@ function Home() {
             Let's Test Your Frontend Knowledge
           </h3>
 
-          <div className="grid grid-cols-2 gap-10 text-center justify-between font-body ">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-center justify-items-center font-body">
             <div className="logo-container border border-border  hover:bg-secondary  shadow-lg rounded-lg px-8 py-8 ">
               <TopicsButton
                 logo={htmlSVG}
