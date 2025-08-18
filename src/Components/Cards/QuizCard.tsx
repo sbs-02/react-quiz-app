@@ -79,7 +79,7 @@ export function QuizCard() {
         },
       });
 
-      setTimeout(() => navigate("/"), 4000);
+      setTimeout(() => navigate("/"), 1000);
     }
   }
 
@@ -87,7 +87,7 @@ export function QuizCard() {
   const progressValue = ((currentIndex + 1) / questions.length) * 100;
 
   return (
-    <div className="w-1/2 bg-white rounded-2xl shadow-xl p-6 flex flex-col gap-4">
+    <div className="w-full md:w-1/2  bg-white rounded-2xl shadow-xl p-6 flex flex-col gap-4">
       {/* Progress bar */}
       <Progress value={progressValue} className="mb-2" />
 
