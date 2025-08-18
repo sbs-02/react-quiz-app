@@ -14,7 +14,6 @@ function Home() {
   const javascriptSVG = "/images/javascript.svg";
   const reactSVG = "/images/react.svg";
 
-  console.log(scores);
   return (
     <Container center>
       <div className="rounded-lg  bg-background   shadow-lg  p-8 lg:p-12 mb-8">
@@ -60,14 +59,20 @@ function Home() {
               />
             </div>
           </div>
-          <div className="flex flex-col">
-            <div className="flex flex-col mt-6 font-body text-lg">
-              <span className="font-semibold mb-2">Past scores</span>
-              <span>HTML: {scores?.html || 0}/5</span>
-              <span>CSS: {scores?.css || 0}/5</span>
-              <span>JavaScript: {scores?.js || 0}/5</span>
-              <span>React: {scores?.react || 0}/5</span>
-            </div>
+          <div className="flex flex-col mt-6 font-body text-lg">
+            {Object.values(scores).some((s) => s.attempted) ? (
+              <>
+                <span className="font-semibold mb-2">Past scores</span>
+                <span>HTML: {scores.html.score}/5</span>
+                <span>CSS: {scores.css.score}/5</span>
+                <span>JavaScript: {scores.js.score}/5</span>
+                <span>React: {scores.react.score}/5</span>
+              </>
+            ) : (
+              <span className="text-text-light italic">
+                Take a quiz to see your scores!
+              </span>
+            )}
           </div>
         </div>
       </div>

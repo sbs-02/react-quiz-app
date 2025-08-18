@@ -4,9 +4,21 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 const loadScores = () => {
   try {
     const scores = localStorage.getItem("quizScores");
-    return scores ? JSON.parse(scores) : { html: 0, css: 0, js: 0, react: 0 };
+    return scores
+      ? JSON.parse(scores)
+      : {
+          html: { score: 0, attempted: false },
+          css: { score: 0, attempted: false },
+          js: { score: 0, attempted: false },
+          react: { score: 0, attempted: false },
+        };
   } catch (e) {
-    return { html: 0, css: 0, js: 0, react: 0 };
+    return {
+      html: { score: 0, attempted: false },
+      css: { score: 0, attempted: false },
+      js: { score: 0, attempted: false },
+      react: { score: 0, attempted: false },
+    };
   }
 };
 
@@ -20,15 +32,17 @@ export const scoreSlice = createSlice({
       state,
       action: PayloadAction<{ subject: string; value: number }>
     ) => {
-      (state as any)[action.payload.subject] = action.payload.value;
+      state[action.payload.subject] = {
+        score: action.payload.value,
+        attempted: true,
+      };
       localStorage.setItem("quizScores", JSON.stringify(state));
     },
-
     resetAllScores: (state) => {
-      state.html = 0;
-      state.css = 0;
-      state.js = 0;
-      state.react = 0;
+      state.html = { score: 0, attempted: false };
+      state.css = { score: 0, attempted: false };
+      state.js = { score: 0, attempted: false };
+      state.react = { score: 0, attempted: false };
       localStorage.setItem("quizScores", JSON.stringify(state));
     },
   },

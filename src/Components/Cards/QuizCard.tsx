@@ -7,8 +7,6 @@ import JavascriptQuestions from "@/Questions/JavascriptQuestions";
 import ReactQuestions from "@/Questions/ReactQuestions";
 import { Progress } from "@/Components/ui/progress";
 import toast, { Toaster } from "react-hot-toast";
-
-// Redux
 import { useAppDispatch } from "@/store/store";
 import { setScore } from "../../store/scoreSlice";
 
@@ -17,7 +15,6 @@ export function QuizCard() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  // Map topics to their respective questions
   const questionsMap: Record<string, Questions[]> = {
     html: HtmlQuestions,
     css: CssQuestions,
@@ -33,7 +30,6 @@ export function QuizCard() {
 
   const currentQuestion = questions[currentIndex];
 
-  // Handle option selection
   function handleOptionClick(index: number) {
     setSelectedOption(index);
     if (index === currentQuestion.correctAnswerIndex) {
@@ -41,7 +37,6 @@ export function QuizCard() {
     }
   }
 
-  // Handle "Next" or "Finish"
   function handleNext() {
     if (selectedOption === null) {
       toast.error("Please select an answer", {
@@ -83,7 +78,6 @@ export function QuizCard() {
     }
   }
 
-  // Progress bar percentage
   const progressValue = ((currentIndex + 1) / questions.length) * 100;
 
   return (
