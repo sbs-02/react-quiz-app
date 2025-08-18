@@ -5,6 +5,11 @@ import { TopicsButton } from "./Components/Buttons/TopicButtons";
 import { QuizCard } from "./Components/Cards/QuizCard";
 import { useAppSelector } from "./store/store";
 
+type Score = {
+  score: number;
+  attempted: boolean;
+};
+
 function Home() {
   const navigate = useNavigate();
   const scores = useAppSelector((state) => state);
@@ -60,7 +65,7 @@ function Home() {
             </div>
           </div>
           <div className="flex flex-col mt-6 font-body text-lg">
-            {Object.values(scores).some((s) => s.attempted) ? (
+            {(Object.values(scores) as Score[]).some((s) => s.attempted) ? (
               <>
                 <span className="font-semibold mb-2">Past scores</span>
                 <span>HTML: {scores.html.score}/5</span>
