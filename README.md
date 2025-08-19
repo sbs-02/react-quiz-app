@@ -7,6 +7,7 @@ A modern, interactive Quiz Application built with React and TypeScript. This app
 - Interactive quiz interface with multiple pages/routes
 - Global state management via Redux Toolkit
 - Styled with TailwindCSS and ShadCN UI components
+- Alert notifications with React-hot-toast
 - Real-time feedback using toast notifications
 - Fast development experience powered by Vite
 
@@ -18,7 +19,7 @@ A modern, interactive Quiz Application built with React and TypeScript. This app
 - **ShadCN UI** — flexible UI primitives
 - **Redux Toolkit** — scalable global state management
 - **React Router DOM** — client-side routing
-- **React-Toastify** — toast notification UI
+- **React-hot-toast** — toast notification UI
 - **ESLint** with support for TypeScript and React rules
 
 ## Project Structure
