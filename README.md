@@ -1,69 +1,89 @@
-# React + TypeScript + Vite
+# REACT QUIZAPP :
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive Quiz Application built with React and TypeScript. This app features seamless navigation, stylish components, alert notifications, state management using Redux Toolkit, and responsive design powered by Vite, TailwindCSS, ShadCN UI, React-hot-toast, and React Router DOM.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Interactive quiz interface with multiple pages/routes
+- Global state management via Redux Toolkit
+- Styled with TailwindCSS and ShadCN UI components
+- Real-time feedback using toast notifications
+- Fast development experience powered by Vite
 
-## Expanding the ESLint configuration
+## Tools & Technologies
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Vite** — build tool with speedy hot module replacement
+- **React + TypeScript** — typed, component-driven UI
+- **TailwindCSS** — utility-first styling
+- **ShadCN UI** — flexible UI primitives
+- **Redux Toolkit** — scalable global state management
+- **React Router DOM** — client-side routing
+- **React-Toastify** — toast notification UI
+- **ESLint** with support for TypeScript and React rules
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Project Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+├── index.html
+├── package-lock.json
+├── package.json
+├── public
+│ └── images
+│ ├── css.svg
+│ ├── html.svg
+│ ├── javascript.svg
+│ └── react.svg
+├── README.md
+├── src
+│ ├── App.css
+│ ├── App.tsx
+│ ├── Components
+│ │ ├── Buttons
+│ │ │ └── TopicButtons.tsx
+│ │ ├── Cards
+│ │ │ └── QuizCard.tsx
+│ │ ├── Container.tsx
+│ │ └── ui
+│ │ ├── alert.tsx
+│ │ ├── button.tsx
+│ │ └── progress.tsx
+│ ├── Contexts
+│ │ ├── QuizContext.tsx
+│ │ └── useQuizContext.tsx
+│ ├── index.css
+│ ├── Interfaces
+│ │ ├── ContainerProps.tsx
+│ │ ├── Questions.tsx
+│ │ ├── QuizCardProps.tsx
+│ │ └── TopicsButtonProps.tsx
+│ ├── lib
+│ │ └── utils.ts
+│ ├── main.tsx
+│ ├── Questions
+│ │ ├── CssQuestions.tsx
+│ │ ├── HtmlQuestions.tsx
+│ │ ├── JavascriptQuestions.tsx
+│ │ └── ReactQuestions.tsx
+│ ├── store
+│ │ ├── scoreSlice.ts
+│ │ └── store.ts
+│ └── vite-env.d.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── tsconfig.tsbuildinfo
+└── vite.config.ts
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting Started
+
+```bash
+git clone https://github.com/sbs-02/react-quiz-app.git
+cd react-quiz-app
+npm install
+npm run dev
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Build & Preview
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+npm run build
+npm run preview
