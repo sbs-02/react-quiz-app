@@ -1,6 +1,6 @@
 # REACT QUIZAPP :
 
-A modern, interactive Quiz Application built with React and TypeScript. This app features seamless navigation, stylish components, alert notifications, state management using Redux Toolkit, and responsive design powered by Vite, TailwindCSS, ShadCN UI, React-hot-toast, and React Router DOM.
+A modern, interactive Quiz Application built with React and TypeScript. This app features stylish components, alert notifications, state management using Redux Toolkit, and responsive design powered by Vite, TailwindCSS, ShadCN UI, React-hot-toast, and React Router DOM.
 
 ## Features
 
@@ -25,53 +25,101 @@ A modern, interactive Quiz Application built with React and TypeScript. This app
 ## Project Structure
 
 ├── index.html
+
 ├── package-lock.json
+
 ├── package.json
+
 ├── public
+
 │ └── images
+
 │ ├── css.svg
+
 │ ├── html.svg
+
 │ ├── javascript.svg
+
 │ └── react.svg
+
 ├── README.md
+
 ├── src
+
 │ ├── App.css
+
 │ ├── App.tsx
+
 │ ├── Components
+
 │ │ ├── Buttons
+
 │ │ │ └── TopicButtons.tsx
+
 │ │ ├── Cards
+
 │ │ │ └── QuizCard.tsx
+
 │ │ ├── Container.tsx
+
 │ │ └── ui
+
 │ │ ├── alert.tsx
+
 │ │ ├── button.tsx
+
 │ │ └── progress.tsx
+
 │ ├── Contexts
+
 │ │ ├── QuizContext.tsx
+
 │ │ └── useQuizContext.tsx
+
 │ ├── index.css
+
 │ ├── Interfaces
+
 │ │ ├── ContainerProps.tsx
+
 │ │ ├── Questions.tsx
+
 │ │ ├── QuizCardProps.tsx
+
 │ │ └── TopicsButtonProps.tsx
+
 │ ├── lib
+
 │ │ └── utils.ts
+
 │ ├── main.tsx
+
 │ ├── Questions
+
 │ │ ├── CssQuestions.tsx
+
 │ │ ├── HtmlQuestions.tsx
+
 │ │ ├── JavascriptQuestions.tsx
+
 │ │ └── ReactQuestions.tsx
+
 │ ├── store
+
 │ │ ├── scoreSlice.ts
+
 │ │ └── store.ts
+
 │ └── vite-env.d.ts
+
 ├── tsconfig.app.json
+
 ├── tsconfig.json
+
 ├── tsconfig.node.json
+
 ├── tsconfig.tsbuildinfo
+
 └── vite.config.ts
 
 ## Getting Started
